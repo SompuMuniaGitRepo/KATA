@@ -1,4 +1,4 @@
-package com.booking.models;
+package com.booking.models.booking;
 
 public class Booking {
     public Integer getRoomid() {
