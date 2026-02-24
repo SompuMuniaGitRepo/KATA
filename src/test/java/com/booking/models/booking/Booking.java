@@ -57,6 +57,14 @@ public class Booking {
         this.phone = phone;
     }
 
+    public Integer getBookingid() {
+        return bookingid;
+    }
+
+    public void setBookingid(Integer bookingid) {
+        this.bookingid = bookingid;
+    }
+
     private Integer roomid;
     private String firstname;
     private String lastname;
@@ -64,4 +72,5 @@ public class Booking {
     private BookingDates bookingdates;
     private String email;
     private String phone;
+    private Integer bookingid;
 }

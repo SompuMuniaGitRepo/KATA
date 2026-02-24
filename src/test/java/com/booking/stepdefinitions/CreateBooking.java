@@ -17,6 +17,8 @@ public class CreateBooking {
 
     private Response createBookingResponse;
 
+    private Response retriveBookingResponse;
+
     @When("I want to book the room")
     public void iWantToBookTheRoom() {
 
@@ -25,27 +27,45 @@ public class CreateBooking {
                 .body(KataUtils.serialize(buildBookingPayload()))
                 .when()
                 .post("https://automationintesting.online/api/booking");
+
+        // Create Booking and check it was successful
+        createBookingResponse.then().statusCode(201)
+                .body("bookingid", greaterThan(0))
+                .log().all();
     }
 
     @Then("I should retrieve my booking")
     public void iShouldRetrieveMyBooking() {
+        // Retrieve Booking object to get booking Id
+        Booking myBooking = KataUtils.deserialize(
+                createBookingResponse
+                        .then()
+                        .statusCode(201)
+                        .extract()
+                        .asString(),
+                Booking.class
+        );
+
+        // Retrieve booking for booking id just created
         TokenManager tokenManager = new TokenManager();
-        System.out.println("Kuttumona Token =========== : " + tokenManager.getToken());
 
-        System.out.println(createBookingResponse.then().log().all());
+        retriveBookingResponse = given()
+                .header("Cookie", "token=" + tokenManager.getToken())
+                .when()
+                .get(String.format("https://automationintesting.online/api/booking/%d", myBooking.getBookingid()));
 
-        createBookingResponse.then().statusCode(201)
-                .body("bookingid", greaterThan(0))
-                .body("roomid", equalTo(35))
+
+        // Match booking id with retrieved booking id
+        retriveBookingResponse.then().statusCode(200)
+                .body("bookingid", equalTo(myBooking.getBookingid()))
                 .log().all();
-
     }
 
     private static Booking buildBookingPayload() {
         Booking booking = new Booking();
         booking.setFirstname("John");
         booking.setLastname("Snow");
-        booking.setRoomid(35);
+        booking.setRoomid(557);
         booking.setEmail("john.snow@example.com");
         booking.setPhone("1234567890889");
         booking.setDepositpaid(true);
