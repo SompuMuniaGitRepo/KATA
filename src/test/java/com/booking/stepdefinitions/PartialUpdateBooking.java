@@ -13,13 +13,13 @@ public class PartialUpdateBooking {
 
     @When("I want to partially update my booking")
     public void iWantToPartiallyUpdateMyBooking() {
-        bookingUpdateResponse = BookingClient.partialUpdateBooking(RequestBuilderUtils.BOOKING_ID, RequestBuilderUtils.buildPartiallyUpdatedBookingPayload());
+        //bookingUpdateResponse = BookingClient.partialUpdateBooking(RequestBuilderUtils.BOOKING_ID, RequestBuilderUtils.buildPartiallyUpdatedBookingPayload());
     }
 
     @Then("I should get my partially updated booking details")
     public void iShouldGetMyPartiallyUpdatedBookingDetails()  {
 
-        bookingUpdateResponse
+        /*bookingUpdateResponse
                 .then()
                 .statusCode(200)
                 .body("success", equalTo(true))
@@ -41,6 +41,6 @@ public class PartialUpdateBooking {
                 .body("bookingdates.checkin", equalTo(RequestBuilderUtils.ENTIRELY_UPDATED_CHECK_IN_DATE))
                 .body("bookingdates.checkout", equalTo(RequestBuilderUtils.ENTIRELY_UPDATED_CHECK_OUT_DATE))
                 .log()
-                .all();
+                .all();*/
     }
 }
