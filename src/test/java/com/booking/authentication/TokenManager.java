@@ -1,31 +1,19 @@
 package com.booking.authentication;
 
+import com.booking.client.AuthenticationClient;
 import com.booking.models.auth.Authentication;
 import com.booking.models.auth.Token;
 import com.booking.utils.KataUtils;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-
-import static io.restassured.RestAssured.given;
 
 public class TokenManager {
 
-    public TokenManager () {
-        populateToken();
-    }
-
-    private Token token;
-
-    private void populateToken() {
+    private Token generateToken() {
         Authentication authentication = buildAuthenticationPayload();
 
-        Response auth = given()
-                .contentType(ContentType.JSON)
-                .body(KataUtils.serialize(authentication))
-                .when()
-                .post("https://automationintesting.online/api/auth/login");
+        Response auth = AuthenticationClient.retrieveToken(authentication);
 
-        this.token = KataUtils.deserialize(
+        return KataUtils.deserialize(
                 auth
                         .then()
                         .statusCode(200)
@@ -43,6 +31,7 @@ public class TokenManager {
     }
 
     public String getToken() {
+        Token token = generateToken();
         return token.getToken();
     }
 }

@@ -1,27 +1,21 @@
 package com.booking.stepdefinitions;
 
-import com.booking.authentication.TokenManager;
+import com.booking.client.BookingClient;
+import com.booking.utils.RequestBuilderUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 
-import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class RetrieveBooking {
 
     private Response retrieveBookingResponse;
-    private final Integer TEST_BOOKING_ID = 6;
 
     @When("I want to retrieve my booking")
     public void iWantToRetrieveMyBooking() {
-
-        TokenManager tokenManager = new TokenManager();
-
-        retrieveBookingResponse = given()
-                .header("Cookie", "token=" + tokenManager.getToken())
-                .when()
-                .get(String.format("https://automationintesting.online/api/booking/%d", TEST_BOOKING_ID));
+        // Retrieve booking for a booking id
+        retrieveBookingResponse = BookingClient.retrieveBooking(RequestBuilderUtils.BOOKING_ID);
     }
 
     @Then("I should retrieve my booking details")
@@ -29,13 +23,13 @@ public class RetrieveBooking {
         retrieveBookingResponse
                 .then()
                 .statusCode(200)
-                .body("bookingid", equalTo(TEST_BOOKING_ID))
-                .body("roomid", equalTo(557))
-                .body("firstname", equalTo("John"))
-                .body("lastname", equalTo("Snow"))
-                .body("despositpaid", equalTo(true))
-                .body("bookingdates.checkin", equalTo("2026-12-25"))
-                .body("bookingdates.checkout", equalTo("2026-12-31"))
+                .body("bookingid", equalTo(RequestBuilderUtils.BOOKING_ID))
+                .body("roomid", equalTo(RequestBuilderUtils.ROOM_ID))
+                .body("firstname", equalTo(RequestBuilderUtils.FIRSTNAME))
+                .body("lastname", equalTo(RequestBuilderUtils.LASTNAME))
+                .body("depositpaid", equalTo(RequestBuilderUtils.DEPOSIT_PAID))
+                .body("bookingdates.checkin", equalTo(RequestBuilderUtils.CHECK_IN_DATE))
+                .body("bookingdates.checkout", equalTo(RequestBuilderUtils.CHECK_OUT_DATE))
                 .log()
                 .all();
     }

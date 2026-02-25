@@ -7,7 +7,12 @@ import static io.cucumber.core.options.Constants.PLUGIN_PROPERTY_NAME;
 @Suite
 @IncludeEngines("cucumber")
 @SelectPackages("com.booking")
-@SelectClasspathResource("features")
+@SelectClasspathResource("features/createBooking.feature")
+@SelectClasspathResource("features/retrieveBooking.feature")
+@SelectClasspathResource("features/updateEntireBooking.feature")
+@SelectClasspathResource("features/partialUpdateBooking.feature")
+@SelectClasspathResource("features/deleteBooking.feature")
+@SelectClasspathResource("features/messages.feature")
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.booking")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/cucumber-reports.html, json:target/cucumber.json")
 public class TestRunner {
