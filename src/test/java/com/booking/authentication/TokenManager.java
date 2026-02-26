@@ -10,6 +10,10 @@ public class TokenManager {
 
     private Token token;
 
+    /**
+     * Generate login token by calling API endpoint with userId and password
+     * @return Token
+     */
     private Token generateToken() {
         Response auth = AuthenticationClient.retrieveToken(RequestBuilderUtils.buildAuthenticationPayload());
 
@@ -23,6 +27,10 @@ public class TokenManager {
         );
     }
 
+    /**
+     * Returns generated token to Client methods where it will be used for login
+     * @return Token
+     */
     public String getPassKey() {
         if (token == null) {
             token = generateToken();
