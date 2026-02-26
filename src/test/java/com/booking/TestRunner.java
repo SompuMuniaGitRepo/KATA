@@ -7,6 +7,10 @@ import static io.cucumber.core.options.Constants.PLUGIN_PROPERTY_NAME;
 @Suite
 @IncludeEngines("cucumber")
 @SelectPackages("com.booking")
+@SelectClasspathResource("features/createBookingScenariosInvalidLongFirstName.feature")
+@SelectClasspathResource("features/createBookingScenariosInvalidShortFirstName.feature")
+@SelectClasspathResource("features/createBookingScenariosInvalidLongLastName.feature")
+@SelectClasspathResource("features/createBookingScenariosInvalidShortLastName.feature")
 @SelectClasspathResource("features/createBooking.feature")
 @SelectClasspathResource("features/retrieveBooking.feature")
 @SelectClasspathResource("features/updateEntireBooking.feature")
