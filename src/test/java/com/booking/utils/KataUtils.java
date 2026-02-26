@@ -7,6 +7,11 @@ public class KataUtils {
 
     private static final ObjectMapper mapper = new ObjectMapper();
 
+    /**
+     * Convert any POJO structure to json
+     * @param payload to serialize to JSON
+     * @return String
+     */
     public static String serialize(Object payload) {
         if (payload == null) {
             return null;
@@ -20,6 +25,13 @@ public class KataUtils {
         return null;
     }
 
+    /**
+     * Convert any json to given POJO structure
+     * @param json to deserialize
+     * @param t to POJO structure after deserialization
+     * @return String
+     */
+    // Convert any json to given POJO structure
     public static <T> T deserialize(String json, Class<T> t) {
         if (json == null || json.isBlank()) {
             return null;

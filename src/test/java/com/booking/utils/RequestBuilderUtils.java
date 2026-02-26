@@ -39,6 +39,10 @@ public class RequestBuilderUtils {
     public static final String PARTIALLY_UPDATED_LASTNAME = "Stark";
     public static final boolean PARTIALLY_UPDATED_DEPOSIT_PAID = true;
 
+    /**
+     * Build payload for create new booking
+     * @return Booking
+     */
     public static Booking buildBookingPayload() {
         Booking booking = new Booking();
         booking.setFirstname(FIRSTNAME);
@@ -55,6 +59,10 @@ public class RequestBuilderUtils {
         return booking;
     }
 
+    /**
+     * Build payload for update entire booking
+     * @return Booking
+     */
     public static Booking buildEntirelyUpdatedBookingPayload() {
         Booking booking = new Booking();
         booking.setFirstname(ENTIRELY_UPDATED_FIRSTNAME);
@@ -71,6 +79,10 @@ public class RequestBuilderUtils {
         return booking;
     }
 
+    /**
+     * Build payload for update partial booking
+     * @return BookingPartialUpdate
+     */
     public static BookingPartialUpdate buildPartiallyUpdatedBookingPayload() {
         BookingPartialUpdate bookingPartialUpdate = new BookingPartialUpdate();
 
@@ -82,6 +94,10 @@ public class RequestBuilderUtils {
         return bookingPartialUpdate;
     }
 
+    /**
+     * Build payload for new booking checkIn and checkOut dates
+     * @return BookingPartialUpdate
+     */
     public static BookingDates buildBookingDatesPayload() {
         BookingDates bookingDates = new BookingDates();
         bookingDates.setCheckin(CHECK_IN_DATE);
@@ -90,6 +106,10 @@ public class RequestBuilderUtils {
         return bookingDates;
     }
 
+    /**
+     * Build payload for entirely update booking checkIn and checkOut dates
+     * @return BookingPartialUpdate
+     */
     public static BookingDates buildEntirelyUpdatedBookingDatesPayload() {
         BookingDates bookingDates = new BookingDates();
         bookingDates.setCheckin(ENTIRELY_UPDATED_CHECK_IN_DATE);
@@ -98,10 +118,18 @@ public class RequestBuilderUtils {
         return bookingDates;
     }
 
+    /**
+     * Set bookingId in static variable so that other test cases can use it
+     * @param bookingId booking Id
+     */
     public static void setBookingId(Integer bookingId) {
         BOOKING_ID = bookingId;
     }
 
+    /**
+     * Build payload for login to retrieve token
+     * @return Authentication
+     */
     public static Authentication buildAuthenticationPayload() {
         Authentication authentication = new Authentication();
         authentication.setUsername(USERNAME);

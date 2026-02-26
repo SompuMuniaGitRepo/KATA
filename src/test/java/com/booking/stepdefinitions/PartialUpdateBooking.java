@@ -13,12 +13,13 @@ public class PartialUpdateBooking {
 
     @When("I want to partially update my booking")
     public void iWantToPartiallyUpdateMyBooking() {
+        // Update partial booking by calling API endpoint PATCH /booking/{id}
         //bookingUpdateResponse = BookingClient.partialUpdateBooking(RequestBuilderUtils.BOOKING_ID, RequestBuilderUtils.buildPartiallyUpdatedBookingPayload());
     }
 
     @Then("I should get my partially updated booking details")
     public void iShouldGetMyPartiallyUpdatedBookingDetails()  {
-
+        // After response from API is received, need to check if partial update call was successful
         /*bookingUpdateResponse
                 .then()
                 .statusCode(200)
@@ -29,7 +30,7 @@ public class PartialUpdateBooking {
         // Retrieve booking for a booking id
         Response retrieveBookingResponse = BookingClient.retrieveBooking(RequestBuilderUtils.BOOKING_ID);
 
-        // Match with updated response
+        // Match with updated response for which update was made
         retrieveBookingResponse
                 .then()
                 .statusCode(200)

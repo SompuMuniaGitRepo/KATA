@@ -18,18 +18,18 @@ public class CreateBooking {
     @When("I want to book the room")
     public void iWantToBookTheRoom() {
 
-        // Create booking
+        // Create booking by calling API endpoint POST /booking
         createBookingResponse = BookingClient.createBooking(RequestBuilderUtils.buildBookingPayload());
-
-        // check if booking was successful
-        createBookingResponse.then().statusCode(201)
-                .body("bookingid", greaterThan(0))
-                .log().all();
     }
 
     @Then("I should retrieve my booking")
     public void iShouldRetrieveMyBooking() {
-        // Retrieve Booking object to get booking Id
+        // After response from API is received, need to check if create call was successful
+        createBookingResponse.then().statusCode(201)
+                .body("bookingid", greaterThan(0))
+                .log().all();
+
+        // Retrieve Booking via API call GET /booking/{id} to ensure booking was successfully made
         Booking myBooking = KataUtils.deserialize(
                 createBookingResponse
                         .then()
@@ -42,7 +42,8 @@ public class CreateBooking {
         // Retrieve booking for booking id just created
         Response retriveBookingResponse = BookingClient.retrieveBooking(myBooking.getBookingid());
 
-        // Match booking id with retrieved booking id
+        // Match booking id with retrieved booking id along with other booking data like firstName,
+        // lastName, roomId, payments done and checkIn/checkOut dates
         retriveBookingResponse.then().statusCode(200)
                 .body("bookingid", equalTo(myBooking.getBookingid()))
                 .body("roomid", equalTo(RequestBuilderUtils.ROOM_ID))

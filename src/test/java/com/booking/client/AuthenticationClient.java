@@ -9,6 +9,11 @@ import static io.restassured.RestAssured.given;
 
 public class AuthenticationClient {
 
+    /**
+     * Retrieve login token by calling API endpoint
+     * @param authentication payload contains userId and password
+     * @return Response
+     */
     public static Response retrieveToken(Authentication authentication) {
         return given()
                 .contentType(ContentType.JSON)

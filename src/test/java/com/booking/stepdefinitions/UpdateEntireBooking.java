@@ -13,12 +13,13 @@ public class UpdateEntireBooking {
 
     @When("I want to update my entire booking")
     public void iWantToUpdateMyEntireBooking() {
-        // Update entire booking for a booking id
+        // Update entire booking by calling API endpoint PUT /booking/{id}
         bookingUpdateResponse = BookingClient.entireUpdateBooking(RequestBuilderUtils.BOOKING_ID, RequestBuilderUtils.buildEntirelyUpdatedBookingPayload());
     }
 
     @Then("I should get my entirely updated booking details")
     public void iShouldGetMyEntirelyUpdatedBookingDetails()  {
+        // After response from API is received, need to check if entire update call was successful
         bookingUpdateResponse
                 .then()
                 .statusCode(200)

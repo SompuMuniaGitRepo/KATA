@@ -14,12 +14,14 @@ public class RetrieveBooking {
 
     @When("I want to retrieve my booking")
     public void iWantToRetrieveMyBooking() {
-        // Retrieve booking for a booking id
+        // Retrieve booking by calling API endpoint GET /booking/{id}
         retrieveBookingResponse = BookingClient.retrieveBooking(RequestBuilderUtils.BOOKING_ID);
     }
 
     @Then("I should retrieve my booking details")
     public void iShouldRetrieveMyBookingDetails() {
+        // Match booking id with retrieved booking id along with other booking data like firstName,
+        // lastName, roomId, payments done and checkIn/checkOut dates
         retrieveBookingResponse
                 .then()
                 .statusCode(200)

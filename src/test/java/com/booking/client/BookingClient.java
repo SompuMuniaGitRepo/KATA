@@ -13,6 +13,11 @@ public class BookingClient {
 
     private static final TokenManager tokenManager = new TokenManager();
 
+    /**
+     * Create booking by calling API endpoint with Booking details
+     * @param booking booking details containing firstName, lastName, roomId, checkIn and checkOut dates
+     * @return Response
+     */
     public static Response createBooking(Booking booking) {
         return given()
                 .contentType(ContentType.JSON)
@@ -20,6 +25,11 @@ public class BookingClient {
                 .when()
                 .post("https://automationintesting.online/api/booking");
     }
+    /**
+     * Retrieve booking by calling API endpoint with Booking ID and login token
+     * @param bookingId bookingId for which booking details will be retrieved
+     * @return Response
+     */
     public static Response retrieveBooking(Integer bookingId) {
         return given()
                 .header("Cookie", "token=" + tokenManager.getPassKey())
@@ -27,6 +37,11 @@ public class BookingClient {
                 .get(String.format("https://automationintesting.online/api/booking/%d", bookingId));
     }
 
+    /**
+     * Delete booking by calling API endpoint with Booking ID and login token
+     * @param bookingId bookingId for which booking details will be deleted
+     * @return Response
+     */
     public static Response deleteBooking(Integer bookingId) {
         return given()
                 .header("Cookie", "token=" + tokenManager.getPassKey())
@@ -34,6 +49,12 @@ public class BookingClient {
                 .delete(String.format("https://automationintesting.online/api/booking/%d", bookingId));
     }
 
+    /**
+     * Update entire booking by calling API endpoint with Booking ID and login token
+     * @param bookingId bookingId for which booking details will be entirely updated
+     * @param booking booking details containing firstName, lastName, roomId, checkIn and checkOut dates
+     * @return Response
+     */
     public static Response entireUpdateBooking(Integer bookingId, Booking booking) {
         return given()
                 .header("Cookie", "token=" + tokenManager.getPassKey())
@@ -43,6 +64,12 @@ public class BookingClient {
                 .put(String.format("https://automationintesting.online/api/booking/%d", bookingId));
     }
 
+    /**
+     * Update partial booking by calling API endpoint with Booking ID and login token
+     * @param bookingId bookingId for which booking details will be partially updated
+     * @param bookingPartialUpdate booking details containing firstName, lastName and deposit paid
+     * @return Response
+     */
     public static Response partialUpdateBooking(Integer bookingId, BookingPartialUpdate bookingPartialUpdate) {
         return given()
                 .header("Cookie", "token=" + tokenManager.getPassKey())
