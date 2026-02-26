@@ -19,7 +19,7 @@ public class RequestBuilderUtils {
     public static Integer BOOKING_ID = -1;
     public static final String FIRSTNAME = "John";
     public static final String LASTNAME = "Snow";
-    public static final Integer ROOM_ID = 4;
+    public static final Integer ROOM_ID = 7;
     public static final String EMAIL = "john.snow@got.com";
     public static final String PHONE = "1234567890889";
     public static final boolean DEPOSIT_PAID = true;
@@ -28,7 +28,7 @@ public class RequestBuilderUtils {
 
     public static final String ENTIRELY_UPDATED_FIRSTNAME = "Denaerys";
     public static final String ENTIRELY_UPDATED_LASTNAME = "Targaryen";
-    public static final Integer ENTIRELY_UPDATED_ROOM_ID = 4;
+    public static final Integer ENTIRELY_UPDATED_ROOM_ID = 7;
     public static final String ENTIRELY_UPDATED_EMAIL = "denaerys.targaryen@got.com";
     public static final String ENTIRELY_UPDATED_PHONE = "1234765890889";
     public static final boolean ENTIRELY_UPDATED_DEPOSIT_PAID = false;
