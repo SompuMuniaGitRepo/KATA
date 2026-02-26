@@ -14,6 +14,7 @@ import static io.cucumber.core.options.Constants.PLUGIN_PROPERTY_NAME;
 @SelectClasspathResource("features/createBookingScenariosInvalidLongPhone.feature")
 @SelectClasspathResource("features/createBookingScenariosInvalidShortPhone.feature")
 @SelectClasspathResource("features/createBookingScenariosInvalidEmail.feature")
+@SelectClasspathResource("features/retrieveBookingScenariosNonExistingBooking.feature")
 @SelectClasspathResource("features/createBooking.feature")
 @SelectClasspathResource("features/retrieveBooking.feature")
 @SelectClasspathResource("features/updateEntireBooking.feature")
