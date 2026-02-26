@@ -45,6 +45,12 @@ public class CreateBooking {
         // Match booking id with retrieved booking id
         retriveBookingResponse.then().statusCode(200)
                 .body("bookingid", equalTo(myBooking.getBookingid()))
+                .body("roomid", equalTo(RequestBuilderUtils.ROOM_ID))
+                .body("firstname", equalTo(RequestBuilderUtils.FIRSTNAME))
+                .body("lastname", equalTo(RequestBuilderUtils.LASTNAME))
+                .body("depositpaid", equalTo(RequestBuilderUtils.DEPOSIT_PAID))
+                .body("bookingdates.checkin", equalTo(RequestBuilderUtils.CHECK_IN_DATE))
+                .body("bookingdates.checkout", equalTo(RequestBuilderUtils.CHECK_OUT_DATE))
                 .log().all();
 
         // set the BOOKING ID at static level so that other test cases can use it

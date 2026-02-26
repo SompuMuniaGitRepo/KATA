@@ -22,21 +22,21 @@ public class BookingClient {
     }
     public static Response retrieveBooking(Integer bookingId) {
         return given()
-                .header("Cookie", "token=" + tokenManager.getToken())
+                .header("Cookie", "token=" + tokenManager.getPassKey())
                 .when()
                 .get(String.format("https://automationintesting.online/api/booking/%d", bookingId));
     }
 
     public static Response deleteBooking(Integer bookingId) {
         return given()
-                .header("Cookie", "token=" + tokenManager.getToken())
+                .header("Cookie", "token=" + tokenManager.getPassKey())
                 .when()
                 .delete(String.format("https://automationintesting.online/api/booking/%d", bookingId));
     }
 
     public static Response entireUpdateBooking(Integer bookingId, Booking booking) {
         return given()
-                .header("Cookie", "token=" + tokenManager.getToken())
+                .header("Cookie", "token=" + tokenManager.getPassKey())
                 .contentType(ContentType.JSON)
                 .body(KataUtils.serialize(booking))
                 .when()
@@ -45,7 +45,7 @@ public class BookingClient {
 
     public static Response partialUpdateBooking(Integer bookingId, BookingPartialUpdate bookingPartialUpdate) {
         return given()
-                .header("Cookie", "token=" + tokenManager.getToken())
+                .header("Cookie", "token=" + tokenManager.getPassKey())
                 .contentType(ContentType.JSON)
                 .body(KataUtils.serialize(bookingPartialUpdate))
                 .when()

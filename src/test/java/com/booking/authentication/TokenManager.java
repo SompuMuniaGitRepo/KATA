@@ -1,17 +1,17 @@
 package com.booking.authentication;
 
 import com.booking.client.AuthenticationClient;
-import com.booking.models.auth.Authentication;
 import com.booking.models.auth.Token;
 import com.booking.utils.KataUtils;
+import com.booking.utils.RequestBuilderUtils;
 import io.restassured.response.Response;
 
 public class TokenManager {
 
-    private Token generateToken() {
-        Authentication authentication = buildAuthenticationPayload();
+    private Token token;
 
-        Response auth = AuthenticationClient.retrieveToken(authentication);
+    private Token generateToken() {
+        Response auth = AuthenticationClient.retrieveToken(RequestBuilderUtils.buildAuthenticationPayload());
 
         return KataUtils.deserialize(
                 auth
@@ -23,15 +23,10 @@ public class TokenManager {
         );
     }
 
-    private static Authentication buildAuthenticationPayload() {
-        Authentication authentication = new Authentication();
-        authentication.setUsername("admin");
-        authentication.setPassword("password");
-        return authentication;
-    }
-
-    public String getToken() {
-        Token token = generateToken();
+    public String getPassKey() {
+        if (token == null) {
+            token = generateToken();
+        }
         return token.getToken();
     }
 }

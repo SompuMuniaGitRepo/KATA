@@ -1,5 +1,6 @@
 package com.booking.utils;
 
+import com.booking.models.auth.Authentication;
 import com.booking.models.booking.Booking;
 import com.booking.models.booking.BookingDates;
 import com.booking.models.booking.BookingPartialUpdate;
@@ -12,11 +13,13 @@ public class RequestBuilderUtils {
     public static final Integer RANDOM_ROOM_ID = random.ints(1, 1000)
             .findFirst()
             .getAsInt();
+    public static final String USERNAME = "admin";
+    public static final String PASSWORD = "password";
 
     public static Integer BOOKING_ID = -1;
     public static final String FIRSTNAME = "John";
     public static final String LASTNAME = "Snow";
-    public static final Integer ROOM_ID = 3;
+    public static final Integer ROOM_ID = 4;
     public static final String EMAIL = "john.snow@got.com";
     public static final String PHONE = "1234567890889";
     public static final boolean DEPOSIT_PAID = true;
@@ -25,7 +28,7 @@ public class RequestBuilderUtils {
 
     public static final String ENTIRELY_UPDATED_FIRSTNAME = "Denaerys";
     public static final String ENTIRELY_UPDATED_LASTNAME = "Targaryen";
-    public static final Integer ENTIRELY_UPDATED_ROOM_ID = 3;
+    public static final Integer ENTIRELY_UPDATED_ROOM_ID = 4;
     public static final String ENTIRELY_UPDATED_EMAIL = "denaerys.targaryen@got.com";
     public static final String ENTIRELY_UPDATED_PHONE = "1234765890889";
     public static final boolean ENTIRELY_UPDATED_DEPOSIT_PAID = false;
@@ -97,5 +100,12 @@ public class RequestBuilderUtils {
 
     public static void setBookingId(Integer bookingId) {
         BOOKING_ID = bookingId;
+    }
+
+    public static Authentication buildAuthenticationPayload() {
+        Authentication authentication = new Authentication();
+        authentication.setUsername(USERNAME);
+        authentication.setPassword(PASSWORD);
+        return authentication;
     }
 }
