@@ -16,7 +16,7 @@ public class CreateBookingScenariosInvalidShortPhone {
 
     private Booking booking;
 
-    @Given("phone number is shorter than 3 character")
+    @Given("phone number is shorter than 11 characters")
     public void phoneIsLonger() {
         // Create booking by calling API endpoint POST /booking
         booking = RequestBuilderUtils.buildBookingPayload();

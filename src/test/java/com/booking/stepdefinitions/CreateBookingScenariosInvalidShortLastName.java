@@ -16,7 +16,7 @@ public class CreateBookingScenariosInvalidShortLastName {
 
     private Booking booking;
 
-    @Given("lastName is shorter than 3 character")
+    @Given("lastName is shorter than 3 characters")
     public void lastNameIsLonger() {
         // Create booking by calling API endpoint POST /booking
         booking = RequestBuilderUtils.buildBookingPayload();
@@ -29,7 +29,7 @@ public class CreateBookingScenariosInvalidShortLastName {
         createBookingResponse = BookingClient.createBooking(booking);
     }
 
-    @Then("Booking creation should fail with short lastName error message size between 3 to 30")
+    @Then("Booking creation should fail with short lastName error message size between 3 to 18")
     public void bookingCreationShouldFailWithErrorMessageSize3to18() {
         // After response from API is received, need to check if create call was successful
         createBookingResponse.then()

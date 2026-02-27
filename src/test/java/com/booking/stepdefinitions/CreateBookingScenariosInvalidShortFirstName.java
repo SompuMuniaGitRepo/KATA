@@ -16,7 +16,7 @@ public class CreateBookingScenariosInvalidShortFirstName {
 
     private Booking booking;
 
-    @Given("firstName is shorter than 3 character")
+    @Given("firstName is shorter than 3 characters")
     public void firstNameIsLonger() {
         // Create booking by calling API endpoint POST /booking
         booking = RequestBuilderUtils.buildBookingPayload();

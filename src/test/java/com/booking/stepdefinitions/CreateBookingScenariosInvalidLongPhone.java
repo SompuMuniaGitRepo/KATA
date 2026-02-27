@@ -16,7 +16,7 @@ public class CreateBookingScenariosInvalidLongPhone {
 
     private Booking booking;
 
-    @Given("phone number is longer than 18 character")
+    @Given("phone number is longer than 21 characters")
     public void phoneIsLonger() {
         // Create booking by calling API endpoint POST /booking
         booking = RequestBuilderUtils.buildBookingPayload();

@@ -16,7 +16,7 @@ public class CreateBookingScenariosInvalidLongLastName {
 
     private Booking booking;
 
-    @Given("lastName is longer than 30 character")
+    @Given("lastName is longer than 18 characters")
     public void lastNameIsLonger() {
         // Create booking by calling API endpoint POST /booking
         booking = RequestBuilderUtils.buildBookingPayload();
@@ -29,7 +29,7 @@ public class CreateBookingScenariosInvalidLongLastName {
         createBookingResponse = BookingClient.createBooking(booking);
     }
 
-    @Then("Booking creation should fail with long lastName error message size between 3 to 30")
+    @Then("Booking creation should fail with long lastName error message size between 3 to 18")
     public void bookingCreationShouldFailWithErrorMessageSize3to18() {
         // After response from API is received, need to check if create call was successful
         createBookingResponse.then()

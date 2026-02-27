@@ -16,7 +16,7 @@ public class CreateBookingScenariosInvalidLongFirstName {
 
     private Booking booking;
 
-    @Given("firstName is longer than 18 character")
+    @Given("firstName is longer than 18 characters")
     public void firstNameIsLonger() {
         // Create booking by calling API endpoint POST /booking
         booking = RequestBuilderUtils.buildBookingPayload();
