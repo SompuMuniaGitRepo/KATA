@@ -1,6 +1,6 @@
 @createBooking
 
 Feature: Create booking
-  Scenario: Booking
+  Scenario: Create a new booking with valid data
     When I want to book the room
     Then I should retrieve my booking
